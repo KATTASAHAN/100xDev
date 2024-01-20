@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 680px;
+}
+
+.layout {
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 5rem;
+  border: unset;
+  cursor: pointer;
+  font-weight: bold;
+}
