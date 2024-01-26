@@ -27,4 +27,21 @@ const zs_signin = z.object({
     .min(6, { message: "Username should contain morethan 6 characters" }),
 });
 
-module.exports = { zs_signup, zs_signin };
+const zs_update_userinfo = z.object({
+  firstName: z
+    .string()
+    .max(50, { message: "Username should contain lessthan 50 characters" })
+    .trim()
+    .optional(),
+  lastName: z
+    .string()
+    .max(50, { message: "Username should contain lessthan 50 characters" })
+    .trim()
+    .optional(),
+  password: z
+    .string()
+    .min(6, { message: "Username should contain morethan 6 characters" })
+    .optional(),
+});
+
+module.exports = { zs_signup, zs_signin, zs_update_userinfo };

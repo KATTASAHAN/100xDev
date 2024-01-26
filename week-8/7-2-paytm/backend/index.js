@@ -10,11 +10,15 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1", v1Router);
 
+// ---------------- TEST ------------------
+
 const { authMiddleware } = require("./middleware.js");
 
 app.get("/", authMiddleware, (req, res) => {
-  res.status(200).json({ msg: "Working fine" });
+  res.status(200).json({ msg: "Working fine", id: req.userId });
 });
+
+// ---------------- TEST ------------------
 
 app.use((err, req, res, next) => {
   console.log(err);
