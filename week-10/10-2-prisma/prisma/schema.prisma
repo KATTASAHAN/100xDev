@@ -11,17 +11,19 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  username  String @unique
+  id        Int     @id @default(autoincrement())
+  username  String  @unique
   password  String
   firstName String?
   lastName  String?
+  todos     Todo[]
 }
 
-model Todos {
+model Todo {
   id          Int     @id @default(autoincrement())
   title       String
   description String?
   done        Boolean @default(false)
-  user_id     Int
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
 }
