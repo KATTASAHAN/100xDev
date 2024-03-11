@@ -8,6 +8,7 @@ export type BlogType = {
   content: string;
   published: boolean;
   author: {
-    name: string;
+    name?: string;
   };
 };
+export type Env = "local" | "prod";

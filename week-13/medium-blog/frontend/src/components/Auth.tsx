@@ -6,8 +6,9 @@ import Header from "./Header";
 import LabeledInput from "./LabeledInput";
 import axios from "axios";
 import { SigninInput, SignupInput } from "@katta_sahan/medium-common";
-import { BACKEND_URL, SIGN_IN, SIGN_UP, USER_ROUTES } from "../config";
+import { SIGN_IN, SIGN_UP, USER_ROUTES } from "../config";
 import { useNavigate } from "react-router-dom";
+import envRouter from "../controlers/router";
 
 const Auth = ({ type }: AuthType) => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Auth = ({ type }: AuthType) => {
 
   async function sendRequest() {
     const END_POINT =
-      BACKEND_URL + USER_ROUTES + (type === "signup" ? SIGN_UP : SIGN_IN);
+      envRouter() + USER_ROUTES + (type === "signup" ? SIGN_UP : SIGN_IN);
     try {
       const response = await axios.post(END_POINT, postInputs);
       const jwt = response.data;
