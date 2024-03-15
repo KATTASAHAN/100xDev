@@ -5,7 +5,7 @@ const BlogCard = (blog: BlogType) => {
   return (
     <div
       key={blog.id.toString()}
-      className="m-2 rounded-xl border max-w-screen-sm p-4"
+      className="m-2 rounded-xl border p-4 w-2/4"
     >
       <div className="flex flex-col gap-1">
         <div className="flex gap-2 items-center">
