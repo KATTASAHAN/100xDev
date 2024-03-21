@@ -1,11 +1,12 @@
+import { Link } from "react-router-dom";
 import { BlogType } from "../types";
 
 const BlogCard = (blog: BlogType) => {
   const authorName = blog?.author?.name || "Annonemos";
   return (
-    <div
-      key={blog.id.toString()}
-      className="m-2 rounded-xl border p-4 w-2/4"
+    <Link
+      to={`/blog/${blog.id}`}
+      className="m-2 rounded-xl border p-4 w-2/4 cursor-pointer"
     >
       <div className="flex flex-col gap-1">
         <div className="flex gap-2 items-center">
@@ -27,7 +28,7 @@ const BlogCard = (blog: BlogType) => {
           <div className="h-1 w-1 bg-slate-400 rounded-full"></div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

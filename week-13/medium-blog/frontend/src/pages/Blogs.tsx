@@ -1,7 +1,7 @@
 import { BlogType } from "../types";
 import BlogCard from "../components/BlogCard";
 import AppBar from "../components/AppBar";
-import useBlogs from "../hooks";
+import { useBlogs } from "../hooks";
 
 const Blogs = () => {
   const { loading, blogs } = useBlogs();
@@ -16,7 +16,7 @@ const Blogs = () => {
       ) : (
         <div className="flex flex-col items-center">
           {blogs.map((blog: BlogType) => (
-            <BlogCard {...blog} />
+            <BlogCard key={blog.id.toString()} {...blog} />
           ))}
         </div>
       )}

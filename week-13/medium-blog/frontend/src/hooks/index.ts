@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import envRouter from "../controlers/router";
 import { BLOGS, BLOG_ROUTES } from "../config";
-import { BlogType } from "../types";
+import { BlogType, FullBlogType } from "../types";
 
-const useBlogs = () => {
+export const useBlogs = () => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState<BlogType[] | []>([]);
 
@@ -25,4 +25,21 @@ const useBlogs = () => {
   return { loading, blogs };
 };
 
-export default useBlogs;
+export const useBlog = ({ id }: { id: string }) => {
+  const [loading, setLoading] = useState(true);
+  const [blog, setBlog] = useState<FullBlogType>();
+
+  useEffect(() => {
+    const END_POINT = envRouter() + BLOG_ROUTES + "/" + id;
+    axios
+      .get(END_POINT, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      .then((data) => {
+        setBlog(data.data.post);
+        setLoading(false);
+      });
+  }, []);
+
+  return { loading, blog };
+};
