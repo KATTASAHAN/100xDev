@@ -11,4 +11,11 @@ export type BlogType = {
     name?: string;
   };
 };
+export type FullBlogType = {
+  title: string;
+  content: string;
+  author: {
+    name?: string;
+  };
+};
 export type Env = "local" | "prod";
