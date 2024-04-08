@@ -20,7 +20,7 @@ export const useBlogs = () => {
         setBlogs(data.data.posts);
         setLoading(false);
       })
-      .catch((e) => setLoading(false));
+      .catch(() => setLoading(false));
   }, []);
 
   return { loading, blogs };
@@ -40,7 +40,7 @@ export const useBlog = ({ id }: { id: string }) => {
         setBlog(data.data.post);
         setLoading(false);
       })
-      .catch((e) => setLoading(false));
+      .catch(() => setLoading(false));
   }, []);
 
   return { loading, blog };
