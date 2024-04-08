@@ -33,7 +33,7 @@ userRouter.post("/signup", async (c) => {
       },
     });
     const token = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.text(token);
+    return c.json({ token, userName: user.name });
   } catch (err) {
     console.log(err);
     c.status(411);
@@ -70,13 +70,28 @@ userRouter.post("/signin", async (c) => {
 
     const token = await sign({ id: user.id }, c.env.JWT_SECRET);
 
-    return c.text(token);
+    return c.json({ token, userName: user.name });
   } catch (err) {
     console.log(err);
     c.status(411);
     return c.text("Invalid Details");
   }
 });
+
+// userRouter.get("/", async (c) => {
+//   const prisma = new PrismaClient({
+//     datasourceUrl: c.env.DATABASE_URL,
+//   }).$extends(withAccelerate());
+
+//   try {
+//     const users = await prisma.user.findMany();
+
+//     return c.json({ success: true, users });
+//   } catch (err) {
+//     console.log(err);
+//     return c.text("Invalid Request");
+//   }
+// });
 
 // userRouter.delete("/delete", async (c) => {
 //   const body = await c.req.json();

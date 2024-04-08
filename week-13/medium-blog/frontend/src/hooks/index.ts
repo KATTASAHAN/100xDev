@@ -19,7 +19,8 @@ export const useBlogs = () => {
       .then((data) => {
         setBlogs(data.data.posts);
         setLoading(false);
-      });
+      })
+      .catch((e) => setLoading(false));
   }, []);
 
   return { loading, blogs };
@@ -38,7 +39,8 @@ export const useBlog = ({ id }: { id: string }) => {
       .then((data) => {
         setBlog(data.data.post);
         setLoading(false);
-      });
+      })
+      .catch((e) => setLoading(false));
   }, []);
 
   return { loading, blog };

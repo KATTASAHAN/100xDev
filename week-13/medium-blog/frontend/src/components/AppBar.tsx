@@ -1,9 +1,24 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Avatar from "./Avatar";
+import Button from "./Button";
+
 const AppBar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   return (
-    <div className="flex justify-between p-4 border-b-2">
-      <div className="font-semibold text-2xl">Medium</div>
-      <div className="h-8 w-8 bg-slate-400 rounded-full flex items-center justify-center text-white font-semibold">
-        {"K"}
+    <div className="flex justify-between items-center px-4 py-2 border-b-2">
+      <Link to={"/blogs"} className="font-semibold text-2xl">
+        Medium
+      </Link>
+      <div className="flex items-center gap-4">
+        {location.pathname !== "/publish" && (
+          <Button
+            label="Publish"
+            css="py-1 m-1"
+            onclick={() => navigate("/publish")}
+          />
+        )}
+        <Avatar name={localStorage.getItem("userName") || "Anonymous"} />
       </div>
     </div>
   );

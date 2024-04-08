@@ -15,7 +15,9 @@ const BlogCard = (blog: BlogType) => {
           </div>
           <div>{blog.author.name}</div>
           <div className="h-1 w-1 bg-slate-600 rounded-full"></div>
-          <div className="text-slate-600">Dec 3,2023</div>
+          <div className="text-slate-600">
+            {new Date(blog.postedOn).toString()}
+          </div>
         </div>
         <div className="font-bold text-2xl">{blog.title}</div>
         <div>{blog.content}</div>

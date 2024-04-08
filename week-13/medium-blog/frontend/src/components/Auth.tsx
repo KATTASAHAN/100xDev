@@ -23,8 +23,10 @@ const Auth = ({ type }: AuthType) => {
       envRouter() + USER_ROUTES + (type === "signup" ? SIGN_UP : SIGN_IN);
     try {
       const response = await axios.post(END_POINT, postInputs);
-      const jwt = response.data;
+      const jwt = response.data.token;
+      const userName = response.data.userName;
       localStorage.setItem("token", jwt);
+      localStorage.setItem("userName", userName);
       navigate("/blogs");
     } catch (e) {
       alert(e);

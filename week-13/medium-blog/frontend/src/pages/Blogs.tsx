@@ -6,22 +6,25 @@ import { useBlogs } from "../hooks";
 const Blogs = () => {
   const { loading, blogs } = useBlogs();
 
-  return (
-    <>
-      <div>
+  if (loading) return <div>loading...</div>;
+  if (blogs.length > 0) {
+    return (
+      <>
         <AppBar />
-      </div>
-      {loading ? (
-        <div>loading...</div>
-      ) : (
         <div className="flex flex-col items-center">
           {blogs.map((blog: BlogType) => (
             <BlogCard key={blog.id.toString()} {...blog} />
           ))}
         </div>
-      )}
-    </>
-  );
+      </>
+    );
+  } else
+    return (
+      <>
+        <AppBar />
+        <div>Something went wrong!!!, Please try after sometime</div>
+      </>
+    );
 };
 
 export default Blogs;
