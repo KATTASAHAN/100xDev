@@ -13,8 +13,8 @@ const AppBar = () => {
       <div className="flex items-center gap-4">
         {location.pathname !== "/publish" && (
           <Button
-            label="Publish"
-            css="py-1 m-1"
+            label="+ New"
+            css="py-1 m-1 rounded-full bg-green-700"
             onclick={() => navigate("/publish")}
           />
         )}

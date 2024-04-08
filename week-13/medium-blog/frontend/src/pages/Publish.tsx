@@ -10,10 +10,11 @@ const Publish = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState<string | null>(null);
   const [description, setDescription] = useState<string | null>(null);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   return (
     <div>
       <AppBar />
-      <div className="flex flex-col gap-4 p-10">
+      <div className="flex flex-col gap-4 p-10 max-w-5xl mx-auto">
         <input
           type="text"
           placeholder="Title"
@@ -30,12 +31,13 @@ const Publish = () => {
             setDescription(e.target.value);
           }}
         ></textarea>
-        <div
-        //  className="flex justify-end"
-        >
+        <div className="flex justify-end">
           <Button
             label="Publish"
+            css="py-1 m-1 rounded-full bg-green-700"
+            isDisabled={!title || !description || isDisabled}
             onclick={async () => {
+              setIsDisabled(true);
               const ENDPOINT = envRouter() + BLOG_ROUTES;
               try {
                 const response = await axios.post(
@@ -50,7 +52,7 @@ const Publish = () => {
                 );
                 navigate("/blog/" + response.data.id);
               } catch (e) {
-                console.log(e);
+                setIsDisabled(false);
               }
             }}
           />

@@ -9,6 +9,8 @@ import Signin from "./pages/Signin";
 import Blog from "./pages/Blog";
 import Blogs from "./pages/Blogs";
 import Publish from "./pages/Publish";
+import NotFound from "./components/NotFound";
+import Retry from "./components/Retry";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,6 +20,7 @@ function App() {
     { path: "/blogs", element: <Blogs /> },
     { path: "/blog/:id", element: <Blog /> },
     { path: "/publish", element: <Publish /> },
+    { path: "*", element: <NotFound /> },
   ]);
   return (
     <>
