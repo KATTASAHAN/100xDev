@@ -1,4 +1,6 @@
-export default function Signin() {
+import React from "react";
+
+const SigninComponent = () => {
   return (
     <div className="h-screen flex justify-center flex-col">
       <div className="flex justify-center">
@@ -32,7 +34,7 @@ export default function Signin() {
       </div>
     </div>
   );
-}
+};
 
 interface LabelledInputType {
   label: string;
@@ -56,3 +58,5 @@ function LabelledInput({ label, placeholder, type }: LabelledInputType) {
     </div>
   );
 }
+
+export default SigninComponent;
